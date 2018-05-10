@@ -12,3 +12,7 @@ export class ApodQueryFilter {
     this.event = undefined;
   }
 }
+
+export class ApodQueryResponse {
+  
+}
