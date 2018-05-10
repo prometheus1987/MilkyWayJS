@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from './app.component';
 import { RoversModule } from "./rovers/rovers.module";
+import { ApodModule } from "./apod/apod.module";
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { HomeComponent } from './home/home.component';
 
@@ -18,6 +19,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     RoversModule,
+    ApodModule,
     NgbModule.forRoot()
   ],
   providers: [],
