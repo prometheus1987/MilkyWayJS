@@ -12,26 +12,17 @@ import { SearchQueryResponse} from "./shared/search";
 export class SearchComponent implements OnInit {
 
   searchQuery: string;
-  service: SearchService;
-  title: string;
-  collection: string[];
-  constructor(public http: HttpClient) { }
 
-  ngOnInit() {
-  }
+  constructor(public http: HttpClient,
+              private service: SearchService) { }
+
+  ngOnInit() {}
 
   onSearch(){
-    // this.service.queryImages(this.searchQuery)
-    //   .subscribe(data =>  {
-    //     let obj = ObjectMapper.deserialize(SearchQueryResponse, data);
-    //     debugger;
-    //   });
-    this.http.get('https://images-api.nasa.gov/search?q=' + this.searchQuery)
-      .subscribe
-        (data => {
-          let obj = ObjectMapper.deserialize(SearchQueryResponse, data);
-          debugger;
-    });
+    this.service.search(this.searchQuery)
+      .subscribe(data =>  {
+        let obj = ObjectMapper.deserialize(SearchQueryResponse, data);
+        debugger;
+      });
   }
-
 }
