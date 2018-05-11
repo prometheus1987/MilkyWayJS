@@ -12,19 +12,18 @@ import * as moment from 'moment';
 })
 export class ApodComponent implements OnInit {
 
-  service: ApodService;
-  date: string;
-  constructor() {  }
+  dateQuery: string;
+  constructor(private service: ApodService) {  }
 
   ngOnInit() {}
 
 
-  queryApod() {
-    this.date = "04/20/2018";
+  queryApod(event) {
+    this.dateQuery = "2018-05-01";
     debugger;
-    this.service.queryApod(this.date)
+    this.service.queryApod(this.dateQuery)
       .subscribe(data =>  {
-        let obj = ObjectMapper.deserialize(ApodQueryResponse, data)
+        let obj = ObjectMapper.deserialize(ApodQueryResponse, data);
         debugger;
       });
   }
