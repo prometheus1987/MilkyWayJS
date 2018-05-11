@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 // import { ObjectMapper } from "json-object-mapper";
 import { SearchService } from "./shared/search.service";
 // import { SearchQueryResponse } from "./shared/search";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-search',
@@ -12,7 +12,7 @@ import { SearchService } from "./shared/search.service";
 export class SearchComponent implements OnInit {
 
   searchQuery: string;
-  items: string[];
+  images: string[];
   data: string[];
   link: string[];
 
@@ -23,11 +23,18 @@ export class SearchComponent implements OnInit {
   onSearch(){
     this.service.search(this.searchQuery)
       .subscribe(data =>  {
-        this.items = data.collection.items;
-        
-        for(let i=0;i<this.items.length; i++){
-          this.data = data.collection.items[i].data[0];
-          this.link = data.collection.items[i].links[0];
+        let imageData = data.collection.items;
+        this.images = mapImages(imageData);
+
+        function mapImages(imageData) {
+          return _.map(imageData, function (image) {
+            return {
+              type: image.data[0].media_type,
+              title: image.data[0].title,
+              description: image.data[0].description,
+              link: image.links && image.links[0].href
+            }
+          });
         }
       });
   }
