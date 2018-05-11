@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {ObjectMapper} from "json-object-mapper";
+
+// import { ObjectMapper } from "json-object-mapper";
 import { SearchService } from "./shared/search.service";
-import { SearchQueryResponse} from "./shared/search";
+// import { SearchQueryResponse } from "./shared/search";
 
 @Component({
   selector: 'app-search',
@@ -12,17 +12,23 @@ import { SearchQueryResponse} from "./shared/search";
 export class SearchComponent implements OnInit {
 
   searchQuery: string;
+  items: string[];
+  data: string[];
+  link: string[];
 
-  constructor(public http: HttpClient,
-              private service: SearchService) { }
+  constructor(private service: SearchService) { }
 
   ngOnInit() {}
 
   onSearch(){
     this.service.search(this.searchQuery)
       .subscribe(data =>  {
-        let obj = ObjectMapper.deserialize(SearchQueryResponse, data);
-        debugger;
+        this.items = data.collection.items;
+        
+        for(let i=0;i<this.items.length; i++){
+          this.data = data.collection.items[i].data[0];
+          this.link = data.collection.items[i].links[0];
+        }
       });
   }
 }
