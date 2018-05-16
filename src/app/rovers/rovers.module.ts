@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RoversComponent } from './rovers.component';
-import { RoverService } from './shared/rovers.service';
+import { RoverService} from "./shared/rovers.service";
 
 
 @NgModule({

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs/Observable";
-import { ApodService } from "./apod.service";
-import {ObjectMapper} from "json-object-mapper";
-import { ApodQueryResponse } from "./apod"
+import { ObjectMapper } from "json-object-mapper";
+import { ApodService } from "./shared/apod.service";
+import { ApodQueryResponse} from "./shared/apod"
 import * as moment from 'moment';
 
 @Component({

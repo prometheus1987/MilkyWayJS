@@ -9,7 +9,7 @@ import { RoversModule } from "./rovers/rovers.module";
 import { ApodModule } from "./apod/apod.module";
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { HomeComponent } from './home/home.component';
-import {SearchModule} from "./search/search.module";
+import { SearchModule } from "./search/search.module";
 import { OrbitalComponent } from './orbital/orbital.component';
 
 

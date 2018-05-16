@@ -9,7 +9,7 @@ export class ApodService {
   constructor(public http: HttpClient) {}
 
   queryApod(dateQuery: string): Observable<any> {
-    const url = "https://api.nasa.gov/planetary/apod?date=" + dateQuery + "&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz";
+    const url = `https://api.nasa.gov/planetary/apod?date=${dateQuery}&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz`;
     return this.http.get(url);
   }
 }
