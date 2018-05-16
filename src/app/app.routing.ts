@@ -4,6 +4,7 @@ import { RoversComponent } from "./rovers/rovers.component";
 import { ApodComponent } from './apod/apod.component'
 import { HomeComponent } from "./home/home.component";
 import { SearchComponent} from './search/search.component';
+import { OrbitalComponent } from './orbital/orbital.component';
 
 
 export const routes: Routes = [
@@ -22,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: 'orbital',
+    component: OrbitalComponent
   },
   {
     path: '',
