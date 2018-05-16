@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RoverService } from './shared/rovers.service';
 
 @Component({
   selector: 'app-rovers',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./rovers.component.scss']
 })
 export class RoversComponent {
-  title = 'Rovers';
+  
+  constructor(private service: RoverService) {  }
+
+  ngOnInit() {}
+  
+
 }

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RoversComponent } from './rovers.component';
+import { RoverService } from './shared/rovers.service';
 
 
 @NgModule({
@@ -8,9 +10,10 @@ import { RoversComponent } from './rovers.component';
     RoversComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [RoverService],
   bootstrap: [RoversComponent]
 })
 export class RoversModule { }
