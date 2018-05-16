@@ -1,9 +1,5 @@
 import { JsonProperty } from "json-object-mapper";
 
-export interface Apod {
-
-}
-
 export class ApodQueryFilter {
   @JsonProperty({name: 'date'})
   event: string;
