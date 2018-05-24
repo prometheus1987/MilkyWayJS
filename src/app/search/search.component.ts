@@ -24,18 +24,18 @@ export class SearchComponent implements OnInit {
     this.service.search(this.searchQuery)
       .subscribe(data =>  {
         let imageData = data.collection.items;
-        this.images = mapImages(imageData);
-
-        function mapImages(imageData) {
-          return _.map(imageData, function (image) {
-            return {
-              type: image.data[0].media_type,
-              title: image.data[0].title,
-              description: image.data[0].description,
-              link: image.links && image.links[0].href
-            }
-          });
+        this.images = this.mapImages(imageData);
+      });
+    }
+    
+    mapImages(imageData) {
+      return _.map(imageData, function (image) {
+        return {
+          type: image.data[0].media_type,
+          title: image.data[0].title,
+          description: image.data[0].description,
+          link: image.links && image.links[0].href
         }
       });
-  }
+    }
 }

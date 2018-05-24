@@ -14,7 +14,7 @@
         <div *ngFor="let image of images">
           <h1>{{image.title}}</h1>
           <img data-aos="fade-in" data-aos-delay="200" (show)="image.type == 'image'" class="img-responsive" src="{{ image.link }}"/>
-          <p><{{image.description}}/p>
+          <p><{{image.description}}</p>
         </div>
       </div>
     </div>
