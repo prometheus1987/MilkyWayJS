@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RoversComponent } from './rovers.component';
 import { RoverService} from "./shared/rovers.service";
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { RoverService} from "./shared/rovers.service";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BsDatepickerModule.forRoot()
   ],
   providers: [RoverService],

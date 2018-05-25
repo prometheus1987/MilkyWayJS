@@ -1,5 +1,13 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1 (click)="onSearch()">Rovers</h1>
+    <h1>Rovers</h1>
+    <select [(ngModel)]="rover" type="text" id="rover" name="rover" class="form-control">
+      <option *ngFor="let rover of rovers" [value]="rover">{{rover}}</option>
+    </select>
+    <input type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           bsDatepicker [(ngModel)]="date">
   </div>
+  <button (click)="onSearch()">Search</button>
 </div>
