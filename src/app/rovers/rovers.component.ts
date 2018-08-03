@@ -15,10 +15,13 @@ export class RoversComponent {
 
   readonly rovers = ['Curiosity', 'Opportunity', 'Spirit'];
 
-  
+  cameras = [
+    "All",
+    "FHAZ"
+  ];
   date: Date = new Date();
   dateQuery: string;
-  camera: string = "";
+  camera: string = "All";
   rover: string = "Curiosity";
   res: string[];
   photos: string[];
@@ -30,7 +33,6 @@ export class RoversComponent {
   ngOnInit() {}
   
   onSearch(){
- 
     this.dateQuery = moment(this.date).format("YYYY-MM-DD");
     this.service.queryRover(this.rover, this.dateQuery, this.camera)
       .subscribe(data =>  {

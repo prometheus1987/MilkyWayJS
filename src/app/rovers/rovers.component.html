@@ -8,7 +8,7 @@
     </div>
     <div class="col-lg-4">
       <select [(ngModel)]="camera" type="text" id="camera" name="camera" class="form-control">
-        <option *ngFor="let camera of cameras" [value]="rover">{{camera}}</option>
+        <option *ngFor="let camera of cameras" [value]="camera">{{camera}}</option>
       </select>
     </div>
     <div class="col-lg-4">
@@ -20,7 +20,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="results && results.length" class="row">
+<div *ngIf="res && res.length" class="row">
   <div class="col-md-8">
     <h1>{{rover}}</h1>
     <p>Total Photos: {{totalPhotos}}</p>

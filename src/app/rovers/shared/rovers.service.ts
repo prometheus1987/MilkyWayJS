@@ -13,11 +13,11 @@ export class RoverService {
   }
 
   queryRover(rover: string, date: string, camera: string): Observable<any> {
-    if(camera) {
-      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz`;  
+    if(camera == "All") {
+      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz`;  
       return this.http.get(url);
     } else {
-      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz`;
+      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz`;
       return this.http.get(url);
     }
   }
