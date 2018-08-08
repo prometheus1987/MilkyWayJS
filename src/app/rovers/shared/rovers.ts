@@ -1,6 +1,6 @@
 import { JsonProperty } from "json-object-mapper";
 
-export class RoverQueryFilter {
+export class RoverQueryRequest {
   @JsonProperty({name: 'rover'})
   rover: string;
   @JsonProperty({name: 'date'})
