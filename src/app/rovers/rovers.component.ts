@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RoverService } from './shared/rovers.service';
+import { AppConfigService } from '../shared/app-config.service';
 import * as _ from "lodash";
-import { ObjectMapper } from "json-object-mapper";
 import * as moment from 'moment';
 
 @Component({
@@ -12,24 +12,18 @@ import * as moment from 'moment';
 })
 export class RoversComponent {
   
-  constructor(private service: RoverService) {  }
+  constructor(private service: RoverService,
+              private configService: AppConfigService) {
+              this.configService.getConfig().subscribe(cfg => {
+                this.cameras = cfg.cameras;
+                this.rovers = cfg.rovers
+              })
+  }
 
-  readonly rovers = ['Curiosity', 'Opportunity', 'Spirit'];
-
-  readonly cameras = [
-    "All",
-    "FHAZ",
-    "RHAZ",
-    "MAST",
-    "NAVCAM",
-    "CHEMCAM",
-    "MAHLI",
-    "MARDI",
-    "MINITES"
-  ];
-  
   date: Date = new Date();
   dateQuery: string;
+  cameras: string[];
+  rovers: string[];
   camera: string = "All";
   rover: string = "Curiosity";
   page: number = 1;

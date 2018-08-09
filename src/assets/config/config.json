@@ -1,0 +1,20 @@
+{
+  "cameras": [
+    "All",
+    "FHAZ",
+    "RHAZ",
+    "MAST",
+    "NAVCAM",
+    "CHEMCAM",
+    "MAHLI",
+    "MARDI",
+    "MINITES"
+  ],
+  "rovers": [
+    "Curiosity",
+    "Opportunity",
+    "Spirit"
+  ],
+  "key": "NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz"
+}
+

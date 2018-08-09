@@ -1,11 +1,19 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/observable";
+import { AppConfigService } from "../../shared/app-config.service";
 
 @Injectable()
 export class RoverService {
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient,
+              private configService: AppConfigService) {
+              this.configService.getConfig().subscribe(cfg => {
+                this.key = cfg.key;
+              })
+  }
+  
+  key: string;
 
   queryManifest(rover: string): Observable<any> {
     const url = `https://api.nasa.gov/mars-photos/api/v1/manifest/${rover}`;
@@ -14,10 +22,10 @@ export class RoverService {
 
   queryRover(rover: string, date: string, camera: string, page: number): Observable<any> {
     if(camera == "All") {
-      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&page=${page}&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz`;  
+      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&page=${page}&api_key=${this.key}`;  
       return this.http.get(url);
     } else {
-      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&${page}&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz`;
+      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&${page}&api_key=${this.key}`;
       return this.http.get(url);
     }
   }

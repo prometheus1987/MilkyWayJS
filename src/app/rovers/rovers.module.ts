@@ -4,6 +4,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RoversComponent } from './rovers.component';
 import { RoverService} from "./shared/rovers.service";
 import { FormsModule } from '@angular/forms';
+import { AppConfigService } from '../shared/app-config.service'
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [RoverService],
+  providers: [AppConfigService, RoverService],
   bootstrap: [RoversComponent]
 })
 export class RoversModule { }
