@@ -25,13 +25,13 @@
     </div>
   </div>
   <div *ngIf="res && res.length" class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <h1>{{rover}}</h1>
       <p>Total Photos: {{totalPhotos}}</p>
       <p>Launch Date: {{launchDate}}</p>
       <p>Landing Date: {{landingDate}}</p>
     </div>
-    <div *ngFor="let photo of photos" class="col-md-3">
+    <div *ngFor="let photo of photos" class="col-md-4">
       <p>{{photo.name}} ({{photo.abbreviation}})</p>
       <img src="{{photo.img}}"/>
     </div>

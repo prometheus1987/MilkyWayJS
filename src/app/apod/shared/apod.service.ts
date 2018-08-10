@@ -1,15 +1,25 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/observable";
+import { AppConfigService } from "../../shared/app-config.service";
 
 
 @Injectable()
 export class ApodService {
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient,
+    private configService: AppConfigService) {
+    this.configService.getConfig().subscribe(cfg => {
+      this.key = cfg.key;
+      this.url = cfg.url;
+    })
+  }
+
+  key: string;
+  url: string;
 
   queryApod(dateQuery: string): Observable<any> {
-    const url = `https://api.nasa.gov/planetary/apod?date=${dateQuery}&api_key=NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz`;
+    const url = `${this.url}/planetary/apod?date=${dateQuery}&api_key=${this.key}`;
     return this.http.get(url);
   }
 }

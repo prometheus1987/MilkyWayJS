@@ -10,10 +10,12 @@ export class RoverService {
               private configService: AppConfigService) {
               this.configService.getConfig().subscribe(cfg => {
                 this.key = cfg.key;
+                this.url = cfg.url;
               })
   }
   
   key: string;
+  url: string;
 
   queryManifest(rover: string): Observable<any> {
     const url = `https://api.nasa.gov/mars-photos/api/v1/manifest/${rover}`;
@@ -22,10 +24,10 @@ export class RoverService {
 
   queryRover(rover: string, date: string, camera: string, page: number): Observable<any> {
     if(camera == "All") {
-      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&page=${page}&api_key=${this.key}`;  
+      const url = `${this.url}/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&page=${page}&api_key=${this.key}`;  
       return this.http.get(url);
     } else {
-      const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&${page}&api_key=${this.key}`;
+      const url = `${this.url}/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&${page}&api_key=${this.key}`;
       return this.http.get(url);
     }
   }
