@@ -10,15 +10,14 @@ import { ApodModule } from "./apod/apod.module";
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { SearchModule } from "./search/search.module";
-import { OrbitalComponent } from './orbital/orbital.component';
+import { OrbitalModule } from './orbital/orbital.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AppNavbarComponent,
-    HomeComponent,
-    OrbitalComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +25,7 @@ import { OrbitalComponent } from './orbital/orbital.component';
     FormsModule,
     AppRoutingModule,
     RoversModule,
+    OrbitalModule,
     ApodModule,
     SearchModule,
     NgbModule.forRoot()
