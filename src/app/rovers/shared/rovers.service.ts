@@ -18,7 +18,7 @@ export class RoverService {
   url: string;
 
   queryManifest(rover: string): Observable<any> {
-    const url = `https://api.nasa.gov/mars-photos/api/v1/manifest/${rover}`;
+    const url = `${this.url}/mars-photos/api/v1/manifest/${rover}`;
     return this.http.get(url);
   }
 

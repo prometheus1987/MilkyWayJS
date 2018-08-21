@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HubbleService } from "./shared/hubble.service";
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-hubble',
@@ -8,12 +9,23 @@ import { HubbleService } from "./shared/hubble.service";
 })
 export class HubbleComponent implements OnInit {
 
-  dateQuery: string;
-  title: string;
-  url: string;
-  explanation: string;
+  res: string[];
+  page: number;
   
   constructor(private service: HubbleService) {  }
 
-  ngOnInit() {  }
+  ngOnInit() {}
+
+  searchSummary() {
+    this.page = 1;
+    this.service.queryHubbleSummary()
+      .subscribe(data =>  {
+        this.res = data;
+        console.log("query hubble summary: ", this.res);
+        debugger;
+      }),
+      (err: HttpErrorResponse) => {
+        console.error(err);
+      };
+  }
 }
