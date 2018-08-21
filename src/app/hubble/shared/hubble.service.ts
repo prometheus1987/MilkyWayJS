@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/observable";
 import { AppConfigService } from "../../shared/app-config.service";
 
-
 @Injectable()
 export class HubbleService {
   constructor(public http: HttpClient,
@@ -19,7 +18,7 @@ export class HubbleService {
 
   queryHubbleSummary(): Observable<any> {
     const url = `http://hubblesite.org/api/v3/images/all`;
-    return this.http.get(url);
+    return this.http.jsonp(url, "");
   }
 
   queryImagesById(id: string): Observable<any> {

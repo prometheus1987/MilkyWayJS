@@ -15,11 +15,10 @@ export class ApodComponent implements OnInit {
   title: string;
   url: string;
   explanation: string;
-
+  
   constructor(private service: ApodService) {  }
 
-  ngOnInit() {}
-
+  ngOnInit() {  }
 
   queryApod(event) {
     this.dateQuery = moment(event).format("YYYY-MM-DD");

@@ -4,7 +4,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HubbleComponent } from "./hubble.component";
 import { HubbleService } from "./shared/hubble.service";
 
-
 @NgModule({
   declarations: [
     HubbleComponent
