@@ -6,6 +6,7 @@ import { HomeComponent } from "./home/home.component";
 import { SearchComponent} from './search/search.component';
 import { OrbitalComponent } from './orbital/orbital.component';
 import { HubbleComponent } from "./hubble/hubble.component";
+import { SpaceXComponent } from "./spacex/spacex.component";
 
 
 export const routes: Routes = [
@@ -32,6 +33,10 @@ export const routes: Routes = [
   {
     path: 'hubble',
     component: HubbleComponent
+  },
+  {
+    path: 'spaceX',
+    component: SpaceXComponent
   },
   {
     path: '',

@@ -13,6 +13,7 @@ import { ApodModule } from './apod/apod.module';
 import { SearchModule } from './search/search.module';
 import { OrbitalModule } from './orbital/orbital.module';
 import { HubbleModule } from './hubble/hubble.module';
+import { SpaceXModule } from './spacex/spacex.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HubbleModule } from './hubble/hubble.module';
     ApodModule,
     SearchModule,
     OrbitalModule,
-    HubbleModule
+    HubbleModule,
+    SpaceXModule
   ],
   providers: [],
   bootstrap: [AppComponent]

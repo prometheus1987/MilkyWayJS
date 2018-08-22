@@ -5,7 +5,7 @@ import { AppConfigService } from '../shared/app-config.service';
 
 describe('RoversService', () => {
   
-  let app: AppConfigService
+  let app: AppConfigService;
   let service: RoverService;
   let http: HttpTestingController;
 
