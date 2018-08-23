@@ -4,7 +4,7 @@ import { SpaceXService } from "./shared/spacex.service";
 @Component({
   selector: 'app-spacex',
   templateUrl: './spacex.component.html',
-  styleUrls: ['./spacex.component.css']
+  styleUrls: ['./spacex.component.scss']
 })
 export class SpaceXComponent implements OnInit {
 

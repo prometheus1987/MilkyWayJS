@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import {JsonpModule, Jsonp, Response} from '@angular/http';
 import { Observable } from "rxjs/observable";
 import { AppConfigService } from "../../shared/app-config.service";
 
 @Injectable()
 export class HubbleService {
-  constructor(public http: HttpClient,
+  constructor(public jsonp: Jsonp,
     private configService: AppConfigService) {
     this.configService.getConfig().subscribe(cfg => {
       this.key = cfg.key;
@@ -18,11 +18,11 @@ export class HubbleService {
 
   queryHubbleSummary(): Observable<any> {
     const url = `http://hubblesite.org/api/v3/images/all`;
-    return this.http.jsonp(url, "");
+    return this.jsonp.request(url);
   }
 
   queryImagesById(id: string): Observable<any> {
     const url = `http://hubblesite.org/api/v3/image/${id}`;
-    return this.http.get(url);
+    return this.jsonp.request(url);
   }
 }
