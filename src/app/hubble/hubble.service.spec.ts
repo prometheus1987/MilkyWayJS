@@ -37,11 +37,10 @@ beforeEach(() => {
   it('search should return a name and id', fakeAsync(() => {
     service.queryHubbleSummary()
       .subscribe(data =>  {
-        this.res = data._body;
+        this.res = data._body; 
     }),
     tick();
-
-    expect(service).toHaveBeenCalled;
-    expect(this.res).toBeDefined;
+    
+    expect(service.queryHubbleSummary).toHaveBeenCalled;
   }));
 });
