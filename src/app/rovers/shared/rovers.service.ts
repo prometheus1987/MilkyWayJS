@@ -8,12 +8,12 @@ export class RoverService {
 
   constructor(public http: HttpClient,
               private configService: AppConfigService) {
-              this.configService.getConfig().subscribe(cfg => {
-                this.key = cfg.key;
-                this.url = cfg.url;
-              })
+    this.configService.getConfig().subscribe(cfg => {
+      this.key = cfg.key;
+      this.url = cfg.url;
+    })
   }
-  
+
   key: string;
   url: string;
 

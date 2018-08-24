@@ -1,20 +1,11 @@
 import { Injectable } from "@angular/core";
-import {JsonpModule, Jsonp, Response} from '@angular/http';
+import { JsonpModule, Jsonp, Response } from '@angular/http';
 import { Observable } from "rxjs/observable";
 import { AppConfigService } from "../../shared/app-config.service";
 
 @Injectable()
 export class HubbleService {
-  constructor(public jsonp: Jsonp,
-    private configService: AppConfigService) {
-    this.configService.getConfig().subscribe(cfg => {
-      this.key = cfg.key;
-      this.url = cfg.hubble;
-    })
-  }
-
-  key: string;
-  url: string;
+  constructor(public jsonp: Jsonp) {}
 
   queryHubbleSummary(): Observable<any> {
     const url = `http://hubblesite.org/api/v3/images/all`;
