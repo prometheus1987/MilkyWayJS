@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HubbleService } from "./shared/hubble.service";
 import { HttpErrorResponse } from '@angular/common/http';
+import { HubbleService } from "./shared/hubble.service";
 
 @Component({
   selector: 'app-hubble',
@@ -19,10 +19,9 @@ export class HubbleComponent implements OnInit {
   searchSummary() {
     this.page = 1;
     this.service.queryHubbleSummary()
-      .subscribe(data =>  {
-        this.res = data;
+      .subscribe(json =>  {
+        this.res = json;
         console.log("query hubble summary: ", this.res);
-        debugger;
       }),
       (err: HttpErrorResponse) => {
         console.error(err);

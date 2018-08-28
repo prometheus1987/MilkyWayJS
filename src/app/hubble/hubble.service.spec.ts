@@ -1,12 +1,5 @@
-import {
-  JsonpModule,
-  Jsonp,
-  BaseRequestOptions,
-  Response,
-  ResponseOptions,
-  Http
-} from "@angular/http";
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import {MockBackend} from "@angular/http/testing";
 import {HubbleService} from './shared/hubble.service';
 
@@ -17,16 +10,10 @@ let backend: MockBackend;
 
 beforeEach(() => {
   TestBed.configureTestingModule({
-    imports: [JsonpModule],
+    imports: [HttpClientTestingModule],
     providers: [
       HubbleService,
-      MockBackend,
-      BaseRequestOptions,
-      {
-        provide: Jsonp,
-        useFactory: (backend, options) => new Jsonp(backend, options),
-        deps: [MockBackend, BaseRequestOptions]
-      }
+      MockBackend
     ]
   });
 
