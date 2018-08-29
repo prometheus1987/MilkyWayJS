@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RoverService } from './shared/rovers.service';
 import { AppConfigService } from '../shared/app-config.service';
+import { ObjectMapper } from 'json-object-mapper';
+import { RoverResponse } from './shared/rover';
 import * as _ from "lodash";
 import * as moment from 'moment';
 
@@ -28,7 +30,7 @@ export class RoversComponent {
   rover: string = "Curiosity";
   page: number = 1;
 
-  res: string[];
+  res: RoverResponse;
   photos: string[];
   totalPhotos: string;
   landingDate: string;
@@ -44,7 +46,7 @@ export class RoversComponent {
     this.service.queryRover(this.rover, this.dateQuery, this.camera, this.page)
       .subscribe(data =>  {
         this.noData = false;
-        this.res = data.photos;
+        this.res = ObjectMapper.deserialize(RoverResponse, data);
         console.log("rover query: ", this.res);
         this.photos = this.mapRoverPhotos(this.res);
         this.totalPhotos = data.photos[0].rover.total_photos;
@@ -65,14 +67,16 @@ export class RoversComponent {
             img: photo.img_src
           }
       });
-  }
-
-  onPageChanged(event: any): void {
-    console.log('event page: ' + event.page);
-    if (event.page != this.page + 1) {
-      this.page = event.page - 1;
-      this.onSearch();
     }
-  }
 
+    calculateMaxDate() {
+    }
+
+    onPageChanged(event: any): void {
+      console.log('event page: ' + event.page);
+      if (event.page != this.page + 1) {
+        this.page = event.page - 1;
+        this.onSearch();
+      }
+    }
 }
