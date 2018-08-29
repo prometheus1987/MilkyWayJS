@@ -18,7 +18,7 @@ export class HubbleComponent implements OnInit {
 
   searchSummary() {
     this.page = 1;
-    this.service.queryHubbleSummary()
+    this.service.queryHubbleSummary(this.page)
       .subscribe(json =>  {
         this.res = json;
         console.log("query hubble summary: ", this.res);
@@ -26,5 +26,13 @@ export class HubbleComponent implements OnInit {
       (err: HttpErrorResponse) => {
         console.error(err);
       };
+  }
+
+  onPageChanged(event: any): void {
+    console.log('event page: ' + event.page);
+    if (event.page != this.page + 1) {
+      this.page = event.page - 1;
+      this.searchSummary();
+    }
   }
 }

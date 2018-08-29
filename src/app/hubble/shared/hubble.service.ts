@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 export class HubbleService {
   constructor(public http: HttpClient) {}
 
-  queryHubbleSummary(): Observable<any> {
-    const url = `http://hubblesite.org/api/v3/images/all?callback=application/javascript`;
+  queryHubbleSummary(page: number): Observable<any> {
+    const url = `http://hubblesite.org/api/v3/images/all?page=${page}?callback=application/javascript`;
     return this.http.jsonp(url, 'callback')
   }
 

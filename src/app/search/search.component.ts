@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   images: string[];
   data: string[];
   link: string[];
+  page: number;
 
   constructor(private service: SearchService) { }
 
@@ -37,5 +38,13 @@ export class SearchComponent implements OnInit {
           link: image.links && image.links[0].href
         }
       });
+    }
+
+    onPageChanged(event: any): void {
+      console.log('event page: ' + event.page);
+      if (event.page != this.page + 1) {
+        this.page = event.page - 1;
+        this.onSearch();
+      }
     }
 }

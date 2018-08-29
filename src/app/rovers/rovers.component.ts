@@ -66,4 +66,13 @@ export class RoversComponent {
           }
       });
   }
+
+  onPageChanged(event: any): void {
+    console.log('event page: ' + event.page);
+    if (event.page != this.page + 1) {
+      this.page = event.page - 1;
+      this.onSearch();
+    }
+  }
+
 }
