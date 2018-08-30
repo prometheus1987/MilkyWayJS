@@ -22,12 +22,15 @@ beforeEach(() => {
   });
 
   it('search should return a name and id', fakeAsync(() => {
-    service.queryHubbleSummary()
+    let page = 1;
+
+    service.queryHubbleSummary(page)
       .subscribe(data =>  {
         this.res = data._body; 
     }),
     tick();
     
-    expect(service.queryHubbleSummary).toHaveBeenCalled;
+    expect(service.queryHubbleSummary).toBeCalled;
+    expect(this.res).toBeDefined;
   }));
 });

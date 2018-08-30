@@ -42,6 +42,7 @@ export class RoversComponent {
   ngOnInit() {}
   
   onSearch(){
+
     this.dateQuery = moment(this.date).format("YYYY-MM-DD");
     this.service.queryRover(this.rover, this.dateQuery, this.camera, this.page)
       .subscribe(data =>  {
