@@ -4,6 +4,11 @@
       <div class="card body">
         <label class="col-md-12">Search Hubble:</label>
         <button class="btn btn-default" type="submit" (click)="searchSummary()"><i class="glyphicon glyphicon-search"></i>Search</button>
+        <div *ngIf="res && res.length" class="row">
+          <div class="col-md-12 text-center" *ngFor="let item of res">
+            <p>{{item.name}}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

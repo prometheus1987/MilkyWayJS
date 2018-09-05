@@ -11,7 +11,7 @@ export class OrbitalService {
     private configService: AppConfigService) {
     this.configService.getConfig().subscribe(cfg => {
       this.key = cfg.key;
-      this.url = cfg.url;
+      this.url = cfg.nasa;
     })
   }
 

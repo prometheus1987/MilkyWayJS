@@ -22,15 +22,14 @@ beforeEach(() => {
   });
 
   it('search should return data', fakeAsync(() => {
-    let searchQuery = 'mars';
+    this.searchQuery = undefined;
 
-    service.search(searchQuery)
+    service.search(this.searchQuery)
       .subscribe(data =>  {
-        this.res = data; 
+        // this.res = data; 
     }),
-    tick();
     
-    expect(searchQuery).toBeDefined;
+    expect(this.searchQuery).toBeDefined;
     expect(service.search).toBeCalled;
     expect(this.res).toBeDefined;
   }));

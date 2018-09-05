@@ -33,5 +33,4 @@ export class OrbitalComponent implements OnInit {
         console.error(err);
       };
     }
-
 }

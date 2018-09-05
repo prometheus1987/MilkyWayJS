@@ -17,11 +17,10 @@ export class HubbleComponent implements OnInit {
   ngOnInit() {}
 
   searchSummary() {
-    this.page = 1;
     this.service.queryHubbleSummary(this.page)
       .subscribe(json =>  {
         this.res = json;
-        console.log("query hubble summary: ", this.res);
+        console.log("page", this.page, this.res);
       }),
       (err: HttpErrorResponse) => {
         console.error(err);
