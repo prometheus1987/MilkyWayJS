@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/observable";
+import { Observable } from "rxjs";
 import { AppConfigService } from "../../shared/app-config.service";
 
 @Injectable()
@@ -10,7 +10,7 @@ export class RoverService {
               private configService: AppConfigService) {
     this.configService.getConfig().subscribe(cfg => {
       this.key = cfg.key;
-      this.url = cfg.url;
+      this.url = cfg.nasa;
     })
   }
 

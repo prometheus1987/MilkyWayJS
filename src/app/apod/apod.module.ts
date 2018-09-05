@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ApodComponent } from "./apod.component";
 import { ApodService } from "./shared/apod.service";
 
@@ -11,7 +10,6 @@ import { ApodService } from "./shared/apod.service";
   ],
   imports: [
     BrowserModule,
-    BsDatepickerModule.forRoot()
   ],
   providers: [ApodService],
   bootstrap: [ApodComponent]
