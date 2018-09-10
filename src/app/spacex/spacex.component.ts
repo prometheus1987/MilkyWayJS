@@ -10,6 +10,11 @@ export class SpaceXComponent implements OnInit {
 
   constructor(private service: SpaceXService) { }
 
+  searchQuery: string;
+  
   ngOnInit() {}
   
+  onSearch() {
+
+  }
 }
