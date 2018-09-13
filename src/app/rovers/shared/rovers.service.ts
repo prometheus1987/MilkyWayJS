@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/observable";
+import { Observable } from "rxjs";
 import { AppConfigService } from "../../shared/app-config.service";
 
 @Injectable()
@@ -18,7 +18,7 @@ export class RoverService {
   url: string;
 
   queryManifest(rover: string): Observable<any> {
-    const url = `https://mars-photos.herokuapp.com/mars-photos/api/v1/manifest/${rover}`;
+    const url = `${this.url}/mars-photos/api/v1/manifest/${rover}`;
     return this.http.get(url);
   }
 
