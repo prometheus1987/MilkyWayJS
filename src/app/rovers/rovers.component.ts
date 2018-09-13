@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RoverService } from './shared/rovers.service';
 import { AppConfigService } from '../shared/app-config.service';
-import { ObjectMapper } from 'json-object-mapper';
-import { RoverResponse } from './shared/rover';
 import * as _ from "lodash";
 import * as moment from 'moment';
 
@@ -30,7 +28,7 @@ export class RoversComponent {
   rover: string = "Curiosity";
   page: number = 1;
 
-  res: RoverResponse;
+  res: string[];
   photos: string[];
   totalPhotos: string;
   landingDate: string;
@@ -47,9 +45,10 @@ export class RoversComponent {
     this.service.queryRover(this.rover, this.dateQuery, this.camera, this.page)
       .subscribe(data =>  {
         this.noData = false;
-        this.res = ObjectMapper.deserialize(RoverResponse, data);
+        this.res = data.photos;
         console.log("rover query: ", this.res);
         this.photos = this.mapRoverPhotos(this.res);
+        debugger;
         this.totalPhotos = data.photos[0].rover.total_photos;
         this.landingDate = data.photos[0].rover.landing_date;
         this.launchDate = data.photos[0].rover.launch_date;

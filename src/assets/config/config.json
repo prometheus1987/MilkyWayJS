@@ -16,7 +16,6 @@
     "Spirit"
   ],
   "key": "NeHYhGtJMXT1kJ9jSP8bnRF2t1IpYShALfGkSKoz",
-  "nasa": "https://api.nasa.gov",
-  "url": "https://mars-photos.herokuapp.com"
+  "url": "https://api.nasa.gov"
 }
 

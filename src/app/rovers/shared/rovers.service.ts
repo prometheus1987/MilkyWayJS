@@ -10,7 +10,7 @@ export class RoverService {
               private configService: AppConfigService) {
     this.configService.getConfig().subscribe(cfg => {
       this.key = cfg.key;
-      this.url = cfg.nasa;
+      this.url = cfg.url;
     })
   }
 
@@ -18,7 +18,7 @@ export class RoverService {
   url: string;
 
   queryManifest(rover: string): Observable<any> {
-    const url = `https://mars-photos.herokuapp.com/mars-photos/api/v1/manifest/${rover}`;
+    const url = `${this.url}/mars-photos/api/v1/manifest/${rover}`;
     return this.http.get(url);
   }
 
