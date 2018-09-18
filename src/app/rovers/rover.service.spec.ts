@@ -25,21 +25,24 @@ describe('RoversService', () => {
     app = TestBed.get(AppConfigService);
   })
 
-  it('should successfully return manifest data', () => {
-    let rover = "Curiosity";
-    service.queryManifest(rover)
-      .subscribe(res => {
-        expect(res).toEqual(
-          [
-            {
-              "photo_manifest": {}
-            }
-          ]
-        )
-      })
 
-    let appRequest = http.expectOne('./assets/config/config.json');
-    let manifestRequest = http.expectOne("https://mars-photos.herokuapp.com/mars-photos/api/v1/manifest/" + rover);
-    http.verify();
+  it('should successfully return camera data', () => {
+    app.getConfig().subscribe(cfg => {
+      expect(cfg.cameras).toEqual(
+        {
+          "cameras": [
+            "All",
+            "FHAZ",
+            "RHAZ",
+            "MAST",
+            "NAVCAM",
+            "CHEMCAM",
+            "MAHLI",
+            "MARDI",
+            "MINITES"
+          ],
+        }
+      )      
+    })
   })
 })
