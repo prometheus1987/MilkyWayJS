@@ -10,6 +10,7 @@ import { HubbleService } from "./shared/hubble.service";
 export class HubbleComponent implements OnInit {
 
   items: string[];
+  details: string[]; 
   page: number;
   id: number;
   
@@ -30,10 +31,10 @@ export class HubbleComponent implements OnInit {
       };
   }
 
-  searchById() {
-    this.service.queryImagesById(this.id) 
+  searchById(id) {
+    this.service.queryImagesById(id) 
       .subscribe(json => {
-        this.items = json;
+        this.details.push(json);
       })
   }
   onPageChanged(event: any): void {
