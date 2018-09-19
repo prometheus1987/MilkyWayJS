@@ -9,24 +9,33 @@ import { HubbleService } from "./shared/hubble.service";
 })
 export class HubbleComponent implements OnInit {
 
-  res: string[];
+  items: string[];
   page: number;
+  id: number;
   
   constructor(private service: HubbleService) {  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.searchSummary();
+  }
 
   searchSummary() {
     this.service.queryHubbleSummary(this.page)
       .subscribe(json =>  {
-        this.res = json;
-        console.log("page", this.page, this.res);
+        this.items = json;
+        console.log("page", this.page, this.items);
       }),
       (err: HttpErrorResponse) => {
         console.error(err);
       };
   }
 
+  searchById() {
+    this.service.queryImagesById(this.id) 
+      .subscribe(json => {
+        this.items = json;
+      })
+  }
   onPageChanged(event: any): void {
     console.log('event page: ' + event.page);
     if (event.page != this.page + 1) {
