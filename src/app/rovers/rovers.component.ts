@@ -28,7 +28,6 @@ export class RoversComponent {
   rover: string = "Curiosity";
   page: number = 1;
 
-  res: string[];
   photos: string[];
   totalPhotos: string;
   landingDate: string;
@@ -45,10 +44,9 @@ export class RoversComponent {
     this.service.queryRover(this.rover, this.dateQuery, this.camera, this.page)
       .subscribe(data =>  {
         this.noData = false;
-        this.res = data.photos;
-        console.log("rover query: ", this.res);
-        this.photos = this.mapRoverPhotos(this.res);
-        debugger;
+        let res = data.photos;
+        console.log("rover query: ", res);
+        this.photos = this.mapRoverPhotos(res);
         this.totalPhotos = data.photos[0].rover.total_photos;
         this.landingDate = data.photos[0].rover.landing_date;
         this.launchDate = data.photos[0].rover.launch_date;
@@ -60,7 +58,7 @@ export class RoversComponent {
     }
 
     mapRoverPhotos(rover) {
-      return _.map(this.res, function(photo){
+      return _.map(rover, function(photo){
           return {
             name: photo.camera.full_name,
             abbreviation: photo.camera.name,
