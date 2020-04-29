@@ -29,7 +29,7 @@
     "bootstrap": "3.3.7",
     "core-js": "^2.4.1",
     "install": "^0.12.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "json-object-mapper": "^1.5.2",
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
